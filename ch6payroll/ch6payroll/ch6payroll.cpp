@@ -2,32 +2,40 @@
 //
 
 #include <iostream>
+#include <iomanip>
+#include <string>
 
 int main()
 {
     std::cout << "Ch 6 Payroll by Kevin Bell\n\n";
 	int hours;
+	char response='y';
 	double rate, pay;
+	while (response == 'y' || response == 'Y')
+	{
 	std::cout << "Enter employee's name: ";
 	std::string name;
 	std::cin >> name;
 	std::cout << "Salaried or hourly? (S/H): ";
 	char type;
 	std::cin >> type;
-	std::cout << "Enter annual salary: ";
-	double salary;
-	std::cin >> salary;
-	std::cout << "Pay for this employee: $";
+	
+	
 	if (type == 'S' || type == 's')
 	{
-		std::cout << salary / 52;
+		std::cout << "Enter annual salary: $";
+		double salary;
+		std::cin >> salary;
+		std::cout << "Pay for this employee: $";
+		std::cout << salary / 52 << std::endl << std::endl;
 	}
 	else if (type == 'H' || type == 'h')
 	{
+		std::cout << "Enter hourly rate: $";
+		std::cin >> rate;
 		std::cout << "Enter hours worked: ";
 		std::cin >> hours;
-		std::cout << "Enter hourly rate: ";
-		std::cin >> rate;
+		
 		if (hours > 40)
 		{
 			pay = (hours - 40) * (rate * 1.5) + (40 * rate);
@@ -36,33 +44,16 @@ int main()
 		{
 			pay = hours * rate;
 		}
-		std::cout << pay;
+		std::cout << "Pay for this employee: $"<< pay << std::endl << std::endl;
 	}
 	else
 	{
-		std::cout << "Invalid input";
+		std::cout << "Invalid input"<< std::endl << std::endl;
 	}
 
-	
-	if (type == 'S' || type == 's')
-	{
-		std::cout << "Enter salary: ";
-		double salary;
-		std::cin >> salary;
-		pay = salary / 52;
-	}
-	else if (type == 'H' || type == 'h')
-	{
-		std::cout << "Enter hours worked: ";
-		std::cin >> hours;
-		std::cout << "Enter hourly rate: ";
-		std::cin >> rate;
-		pay = hours * rate;
-	}
-	else
-	{
-		std::cout << "Invalid input. Please try again.";
-	}
+	std::cout << "Do you want to calculate another payroll? (y/n): ";
+	std::cin >> response;
+	} // end while
 	system("pause");
 	return 0;
 }
