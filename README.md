@@ -19,6 +19,8 @@ Submission: Submit a single zipped folder containing all of the specified screen
 
 ![1](https://github.com/bell-kevin/ch6payroll/blob/main/Screenshot%20from%202022-10-07%2016-44-27.png)
 
+![2](https://github.com/bell-kevin/ch6payroll/blob/main/Screenshot%20from%202022-10-08%2009-15-31.png)
+
 == We're Using GitHub Under Protest ==
 
 This project is currently hosted on GitHub.  This is not ideal; GitHub is a
