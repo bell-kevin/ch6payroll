@@ -4,14 +4,14 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
-
+using namespace std;
 int main()
 {
-    std::cout << "Ch 6 Payroll by Kevin Bell\n\n";
+    cout << "Ch 6 Payroll by Kevin Bell\n\n";
 	int hours;
-	char response='y';
+	string response ="y";
 	double rate, pay;
-	while (response == 'y' || response == 'Y')
+	while (response == "y" || response == "Y" || response == "Yes" || response == "YES" || response == "yes")
 	{
 	std::cout << "Enter employee's name: ";
 	std::string name;
@@ -20,12 +20,21 @@ int main()
 	char type;
 	std::cin >> type;
 	
-	
+	while(type != 'S' && type != 's' && type != 'H' && type != 'h')
+	{
+		std::cout << "Invalid entry. Please enter S or H: ";
+		std::cin >> type;
+	}
 	if (type == 'S' || type == 's')
 	{
 		std::cout << "Enter annual salary: $";
 		double salary;
 		std::cin >> salary;
+		while (salary < 0)
+		{
+			std::cout << "Invalid entry. Please enter a positive number: $";
+			std::cin >> salary;
+		}
 		std::cout << "Pay for this employee: $";
 		std::cout << salary / 52 << std::endl << std::endl;
 	}
@@ -33,9 +42,18 @@ int main()
 	{
 		std::cout << "Enter hourly rate: $";
 		std::cin >> rate;
+		while(rate < 0)
+		{
+			std::cout << "Invalid entry. Please enter a positive number: $";
+			std::cin >> rate;
+		}
 		std::cout << "Enter hours worked: ";
 		std::cin >> hours;
-		
+		while (hours < 0)
+		{
+			std::cout << "Invalid entry. Please enter a positive number: ";
+			std::cin >> hours;
+		}
 		if (hours > 40)
 		{
 			pay = (hours - 40) * (rate * 1.5) + (40 * rate);
@@ -51,8 +69,9 @@ int main()
 		std::cout << "Invalid input"<< std::endl << std::endl;
 	}
 
-	std::cout << "Do you want to calculate another payroll? (y/n): ";
+	std::cout << "Do you want to calculate another paycheck? (y/n): ";
 	std::cin >> response;
+	
 	} // end while
 	system("pause");
 	return 0;
