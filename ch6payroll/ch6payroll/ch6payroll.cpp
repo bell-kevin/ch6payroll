@@ -5,6 +5,10 @@
 #include <iomanip>
 #include <string>
 using namespace std;
+double calculatePay(double rate, double hours);
+double calculatePay(double salary);
+
+
 int main()
 {
     cout << "Ch 6 Payroll by Kevin Bell\n\n";
@@ -36,7 +40,8 @@ int main()
 			std::cin >> salary;
 		}
 		std::cout << "Pay for this employee: $";
-		std::cout << salary / 52 << std::endl << std::endl;
+		salary = calculatePay(salary);
+		std::cout << salary << std::endl << std::endl;
 	}
 	else if (type == 'H' || type == 'h')
 	{
@@ -54,14 +59,7 @@ int main()
 			std::cout << "Invalid entry. Please enter a positive number: ";
 			std::cin >> hours;
 		}
-		if (hours > 40)
-		{
-			pay = (hours - 40) * (rate * 1.5) + (40 * rate);
-		}
-		else
-		{
-			pay = hours * rate;
-		}
+		pay = calculatePay(hours, rate);
 		std::cout << "Pay for this employee: $"<< pay << std::endl << std::endl;
 	}
 	else
@@ -75,4 +73,24 @@ int main()
 	} // end while
 	system("pause");
 	return 0;
+}
+
+double calculatePay(double salary)
+{
+	return salary / 52;
+}
+
+
+double calculatePay(double rate, double hours)
+{
+	double pay;
+	if (hours > 40)
+	{
+		pay = (hours - 40) * (rate * 1.5) + (40 * rate);
+	}
+	else
+	{
+		pay = hours * rate;
+	}
+	return pay;
 }
